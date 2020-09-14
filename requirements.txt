@@ -1,0 +1,15 @@
+pyrogram==1.0.4
+tgcrypto==1.2.0
+asyncio==3.4.3
+aiohttp==3.6.2
+google_search_client==0.1
+pyfiglet==0.8.post1
+speedtest_cli==2.1.2
+requests==2.24.0
+rich==5.0.0
+colorama==0.4.3
+pytz==2019.3
+git+https://gitlab.com/obuilds/public/pytube@ob-v1
+wget==3.2.0
+Wikipedia-API==0.5.4
+psutil==5.7.2
