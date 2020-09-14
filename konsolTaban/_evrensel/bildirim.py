@@ -1,6 +1,6 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from kekikTaban._evrensel import *
+from konsolTaban._evrensel import *
 
 #----------------------------------------------------#
 def bildirim():

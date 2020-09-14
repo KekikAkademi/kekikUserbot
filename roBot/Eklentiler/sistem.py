@@ -3,7 +3,7 @@
 from pyrogram import Client, filters
 import asyncio
 import requests, os, platform
-from kekikTaban._evrensel import oturum, cihaz, ip
+from konsolTaban._evrensel import oturum, cihaz, ip
 from datetime import datetime
 
 from roBot._edevat import logYolla

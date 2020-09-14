@@ -1,8 +1,8 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from kekikTaban._renkler import *
-from kekikTaban._evrensel import *
-from kekikTaban._degiskenler import *
+from konsolTaban._renkler import *
+from konsolTaban._evrensel import *
+from konsolTaban._degiskenler import *
 
 from roBot import *
 from roBot._edevat import *

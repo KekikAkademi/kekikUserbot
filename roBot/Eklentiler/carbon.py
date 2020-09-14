@@ -33,7 +33,7 @@ async def carbon_api(client, message):
     # 'https://carbon.now.sh/?t={theme}&l={lang}&code={code}&bg={bg}'
 
     girilen_yazi = message.text
-    if not cevaplanan_mesaj and (girilen_yazi.split()) == 1:
+    if not cevaplanan_mesaj and len(girilen_yazi.split()) == 1:
         await ilk_mesaj.edit("__Carbon'a yönlendirebilmem için bişeyler verin ya da mesaj yanıtlayın..__")
         return
 

@@ -1,17 +1,17 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from pyrogram import Client
-from pyrogram.types import Message
 from roBot._edevat import logVer
-import json
-from kekikTaban._evrensel import saat, tarih
+import json, datetime, pytz
+
+tarih = datetime.datetime.now(pytz.timezone("Turkey")).strftime("%d-%m-%Y") # Bugünün Tarihi
+saat = datetime.datetime.now(pytz.timezone("Turkey")).strftime("%H:%M")     # Bugünün Saati
 
 bilgiler = json.load(open("bilgiler.json"))
 
-async def logYolla(client:Client, message:Message) -> bool:
+async def logYolla(client, message):
     # < LOG Alanı
     log_dosya = f"[{saat} / {tarih}] "
-    sohbet = await client.get_chat(message.chat.id)
+    # sohbet = await client.get_chat(message.chat.id)
     
     if message.from_user.username:
         log_mesaj   = f"@{message.from_user.username}"

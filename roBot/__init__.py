@@ -11,7 +11,7 @@ from roBot._edevat import *
 def baslangic():
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
     konsol.print(f"\t\t\t[bold blue]@kekikUserBot[/] [yellow]:bird:[/]\t[bold red]Python: [/][i]{surum}[/]")
-    basarili(f"\t\tkekikUserBot v{__version__} pyrogram tabanında çalışıyor...\n")
+    basarili(f"\t\tkekikUserBot [magenta]v[/] [blue]{__version__}[/] [red]pyrogram[/] tabanında çalışıyor...\n")
 
 bilgiler = json.load(open("bilgiler.json"))
 

@@ -32,7 +32,7 @@ async def yt(client, message):
     #------------------------------------------------------------- Başlangıç >
 
     girilen_yazi = message.text
-    if not cevaplanan_mesaj and (girilen_yazi.split()) == 1:
+    if not cevaplanan_mesaj and len(girilen_yazi.split()) == 1:
         await ilk_mesaj.edit("Arama yapabilmek için `Youtube Linki` girmelisiniz, veya @vid __mesajı yanıtlamalısınız..__")
         return
 

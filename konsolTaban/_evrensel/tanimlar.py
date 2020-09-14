@@ -2,8 +2,8 @@
 
 import os, platform, requests, datetime, pytz
 
-from kekikTaban._renkler import *
-from kekikTaban._evrensel import *
+from konsolTaban._renkler import *
+from konsolTaban._evrensel import *
 
 #---------------------------------------------------------------#
 try:

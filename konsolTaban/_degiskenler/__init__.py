@@ -1,3 +1,3 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from kekikTaban._renkler.gokkusagi import *
+from konsolTaban._degiskenler.banner import *
