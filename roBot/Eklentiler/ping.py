@@ -1,25 +1,27 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from pyrogram import Client, filters
+
+from telethon import TelegramClient, errors, events, utils
 import asyncio
 import datetime
 
 from roBot._edevat import logYolla
 
-@Client.on_message(filters.command(['ping'], ['!','.','/']) & filters.me)
-async def ping(client, message):
+@client.on(events.NewMessage(pattern='(!|.|/)ping ?(.*)'))
+async def ping(event):
+
     basla = datetime.datetime.now()
     
     # < Başlangıç    
-    cevaplanan_mesaj    = message.reply_to_message
+    cevaplanan_mesaj    = event.reply_to_msg_id
     if cevaplanan_mesaj is None:
-        yanitlanacak_mesaj  = message.message_id
+        yanitlanacak_mesaj  = event.reply_to_msg_id
     else:
-        yanitlanacak_mesaj = cevaplanan_mesaj.message_id
+        yanitlanacak_mesaj = cevaplanan_mesaj
     
-    ilk_mesaj = await message.edit("__Bekleyin..__",
-        disable_web_page_preview    = True,
-        parse_mode                  = "Markdown"
+    ilk_mesaj = await event.edit
+    (
+        "__Bekleyin..__"
     )
     #------------------------------------------------------------- Başlangıç >
 
