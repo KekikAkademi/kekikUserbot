@@ -1,0 +1,59 @@
+{
+    "name": "kekikUserbot",
+    "description": "KekikAkademi için PyroGram UserBot",
+    "logo": "https://i.imgur.com/dTxK1zA.jpg",
+    "keywords": [
+      "telegram",
+      "pyrogram",
+      "userbot",
+      "kekikakademi",
+      "keyiflerolsun",
+      "kekikuserbot"
+    ],
+    "repository": "https://github.com/KekikAkademi/kekikUserbot",
+    "success_url": "https://t.me/KekikAkademi",
+    "website": "https://www.kekikakademi.org/",
+    "env": {
+      "ENV": {
+        "description": "Bunu HERHANGİ BİR ŞEY olarak ayarlamak, ortam değişkenlerini etkinleştirir",
+        "value": "keyiflerolsun",
+        "required": true
+      },
+      "API_ID": {
+        "description": "Bu değeri şuradan alın: https://my.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "Bu değeri şuradan alın: https://my.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "STRING_SESSION": {
+        "description": "Python3 StringSessionOlustur.py'yi yerel olarak çalıştırarak bu değeri oluşturun..",
+        "value": "",
+        "required": true
+      },
+      "SESSION_ADI": {
+        "description": "Botunuza isim verin (fark etmez)",
+        "value": "kekikUserbot",
+        "required": true
+      },
+      "INDIRME_ALANI": {
+        "description": "geçici indirme alanı, dosya sistemini içeren eklentiler için gereklidir..",
+        "value": "downloads/",
+        "required": true
+      }
+    },
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ],
+    "formation": {
+      "worker": {
+        "quantity": 1,
+        "size": "free"
+      }
+    }
+  }
