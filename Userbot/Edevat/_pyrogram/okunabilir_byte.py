@@ -11,7 +11,7 @@ async def okunabilir_byte(boyut: int) -> str:
         (str):
             "135 MB"
     """
-    if not boyut:
+    if not isinstance(boyut, int):
         return ""
 
     # https://stackoverflow.com/a/49361727/4723940
@@ -25,4 +25,4 @@ async def okunabilir_byte(boyut: int) -> str:
         boyut /= binyirmidort
         say += 1
 
-    return str(round(boyut, 2)) + " " + cikti_sozluk[say] + "B"
+    return f"{round(boyut, 2)} {cikti_sozluk[say]}B"

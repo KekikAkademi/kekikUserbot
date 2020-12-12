@@ -33,6 +33,5 @@ async def kullanici_foto(client:Client, message:Message):
     if cevaplanan_mesaj:
         vatandas = await client.get_users(message.reply_to_message.from_user.id)
         return await client.download_media(vatandas.photo.big_file_id)
-
     else:
         return None

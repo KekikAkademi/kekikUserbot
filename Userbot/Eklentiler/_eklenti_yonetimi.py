@@ -1,5 +1,5 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
-
+from pyrogram.types import Message
 from Userbot.Edevat.zenginLog import log_yolla, hata_log
 from Userbot import DESTEK_KOMUT
 
@@ -23,10 +23,10 @@ from Userbot import SESSION_ADI
 from Userbot.Edevat.eklenti_listesi import eklentilerim
 from pyrogram import Client, filters
 import asyncio, os
-
+from Userbot import command
 mesaj_baslangici = '`Hallediyorum..`'
 
-@Client.on_message(filters.command(['eklentilist'], ['!','.','/']) & filters.me)
+@Client.on_message(command('eklentilist') & filters.me)
 async def eklenti_list(client, message):
     await log_yolla(client, message)
     ilk_mesaj = await message.edit(mesaj_baslangici)
@@ -40,41 +40,46 @@ async def eklenti_list(client, message):
         await hata_log(hata)
         await ilk_mesaj.edit(f'**Hata Var !**\n\n`{type(hata).__name__}`\n\n__{hata}__')
 
-@Client.on_message(filters.command(['eklentiver'], ['!','.','/']) & filters.me)
+
+@Client.on_message(command('eklentiver') & filters.me)
 async def eklenti_ver(client, message):
     await log_yolla(client, message)
-    yanitlanacak_mesaj = yanitlanan_mesaj(message)
+    yanit_id = yanitlanan_mesaj(message)
     ilk_mesaj = await message.edit(mesaj_baslangici)
 
-    girilen_yazi = message.text
-
-    if len(girilen_yazi.split()) == 1:
+    
+    if len(message.command) == 1:
         await ilk_mesaj.edit("`DosyaAdı` **Girmelisin!**")
         return
 
-    dosya = " ".join(girilen_yazi.split()[1:2])
+    dosya = " ".join(message.command[2])
+    if dosya[0] == "_" or (f"{dosya}.py" not in os.listdir("Userbot/Eklentiler")):
+        await ilk_mesaj.edit('**Dosya Bulunamadı!**')
 
-    if f"{dosya}.py" in os.listdir("Userbot/Eklentiler"):
+    else:
         await ilk_mesaj.delete()
 
         await message.reply_document(
             document                = f"./Userbot/Eklentiler/{dosya}.py",
             caption                 = f"__{SESSION_ADI}__ `{dosya}` __eklentisi..__",
             disable_notification    = True,
-            reply_to_message_id     = yanitlanacak_mesaj
+            reply_to_message_id     = yanit_id
             )
 
-    else:
-        await ilk_mesaj.edit('**Dosya Bulunamadı!**')
 
-@Client.on_message(filters.command(['eklential'], ['!','.','/']) & filters.me)
+@Client.on_message(command('eklential') & filters.me)
 async def eklenti_al(client, message):
     await log_yolla(client, message)
-    ilk_mesaj = await message.edit("`Hallediyorum..`")
+    if message.reply_to_message:
+        ilk_mesaj = await message.edit("`Hallediyorum..`")
+    else:
+        await message.delete()
+        return
+
     cevaplanan_mesaj = message.reply_to_message
 
     if len(message.command) == 1 and cevaplanan_mesaj.document:
-        if cevaplanan_mesaj.document.file_name.split(".")[-1] != "py":
+        if cevaplanan_mesaj.document.file_name[-2:] != "py":
             await ilk_mesaj.edit("`Yalnızca python dosyası yükleyebilirsiniz..`")
             return
         eklenti_dizini = f"./Userbot/Eklentiler/{cevaplanan_mesaj.document.file_name}"
@@ -96,7 +101,7 @@ async def eklenti_al(client, message):
 
     await ilk_mesaj.edit('__python betiği yanıtlamanız gerekmekte__')
 
-@Client.on_message(filters.command(['eklentisil'], ['!','.','/']) & filters.me)
+@Client.on_message(command('eklentisil') & filters.me)
 async def eklenti_sil(client, message):
     await log_yolla(client, message)
     ilk_mesaj = await message.edit(mesaj_baslangici)

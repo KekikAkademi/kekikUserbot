@@ -5,13 +5,13 @@ from Userbot import DESTEK_KOMUT, API_ID, API_HASH, STRING_SESSION, SESSION_ADI
 from Userbot.Edevat.eklenti_listesi import eklentilerim
 from Userbot.Edevat._pyrogram.pyro_yardimcilari import yanitlanan_mesaj, kullanici
 from Userbot.Edevat.deldog import deldog
-
+from Userbot import command
 from pyrogram import Client, filters
 from time import time
 
 mesaj_baslangici = '`Hallediyorum..`'
 
-@Client.on_message(filters.command(['yardim'], ['!','.','/']) & filters.me)
+@Client.on_message(command('yardim') & filters.me)
 async def yardim_mesaji(client, message):
     await log_yolla(client, message)
     ilk_mesaj = await message.edit(mesaj_baslangici)
@@ -31,7 +31,7 @@ Kullanabileceğim komutlar ise eklentilerimde gizli..\n\n"""
 
     bitir = time()
     sure = bitir - basla
-    mesaj += f"\n**Tepki Süresi :** `{str(sure)[:4]} sn`"
+    mesaj += f"\n**Tepki Süresi :** `{sure* 1000:.3f} ms"
 
     try:
         await ilk_mesaj.edit(mesaj, disable_web_page_preview=True)
@@ -39,7 +39,7 @@ Kullanabileceğim komutlar ise eklentilerimde gizli..\n\n"""
         await hata_log(hata)
         await ilk_mesaj.edit(f'**Hata Var !**\n\n`{type(hata).__name__}`\n\n__{hata}__')
 
-@Client.on_message(filters.command(['destek'], ['!','.','/']) & filters.me)
+@Client.on_message(command('destek') & filters.me)
 async def destek(client, message):
     await log_yolla(client, message)
     ilk_mesaj = await message.edit(mesaj_baslangici)
@@ -47,8 +47,7 @@ async def destek(client, message):
     girilen_yazi = message.text.split()
 
     if len(girilen_yazi) == 1:
-        mesaj = "`DosyaAdı` **Girmelisin!**\n\n"
-
+        mesaj = f"`DosyaAdı` **Girmelisin!**\n\n"
         mesaj += "__Destek alınabilecek Eklentilerim;__\n"
         mesaj += eklentilerim()
 
@@ -74,13 +73,12 @@ async def destek(client, message):
 
     except KeyError:
         mesaj = f"`{girilen_yazi[1]}`\n\t**Adında bir eklenti bulunamadı..**"
-
         mesaj += "\n\n__Destek alınabilecek Eklentilerim;__\n"
         mesaj += eklentilerim()
 
     await ilk_mesaj.edit(mesaj)
 
-@Client.on_message(filters.command(['logsalla'], ['!','.','/']) & filters.me)
+@Client.on_message(command('logsalla') & filters.me)
 async def logsalla(client, message):
     await log_yolla(client, message)
     yanitlanacak_mesaj = yanitlanan_mesaj(message)
@@ -94,7 +92,7 @@ async def logsalla(client, message):
         reply_to_message_id         = yanitlanacak_mesaj
     )
 
-@Client.on_message(filters.command(['envsalla'], ['!','.','/']) & filters.me)
+@Client.on_message(command('envsalla') & filters.me)
 async def envsalla(client, message):
     await log_yolla(client, message)
     ilk_mesaj = await message.edit(mesaj_baslangici)

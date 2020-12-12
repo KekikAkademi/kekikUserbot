@@ -5,9 +5,9 @@ async def zaman_donustur(saniye: int) -> str:
     saat, dakika    = divmod(dakika, 60)
     gun, saat       = divmod(saat, 24)
     toparla = (
-        ((str(gun) + " gün, ") if gun else "")
-        + ((str(saat) + " saat, ") if saat else "")
-        + ((str(dakika) + " dakika, ") if dakika else "")
-        + ((str(saniye) + " saniye, ") if saniye else "")
+        f"{gun} gün, " if gun else ""
+        + f"{saat} saat, " if saat else ""
+        + f"{dakika} dakika, " if dakika else ""
+        + f"{saniye} saniye, " if saniye else ""
     )
     return toparla[:-2]

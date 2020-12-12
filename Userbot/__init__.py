@@ -1,9 +1,12 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from pyrogram import Client, __version__
+from pyrogram import Client, filters,__version__
 import os, sys
 from dotenv import load_dotenv
 from KekikTaban import KekikTaban
+from functools import partial
+
+command = partial(filters.command, ["!", ".", "/"])
 
 taban = KekikTaban(
     baslik   = "@KekikAkademi Userbot",

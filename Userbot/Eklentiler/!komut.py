@@ -3,7 +3,7 @@
 from Userbot.Edevat.zenginLog import log_yolla, hata_log
 from Userbot import DESTEK_KOMUT
 from pathlib import Path
-
+from Userbot import command
 DESTEK_KOMUT.update({
     Path(__file__).stem : {
         "aciklama"  : "Merhaba dünya..",
@@ -18,7 +18,7 @@ DESTEK_KOMUT.update({
 
 from pyrogram import Client, filters
 
-@Client.on_message(filters.command(['komut'], ['!','.','/']) & filters.me)
+@Client.on_message(command("komut") & filters.me)
 async def komut(client, message):
     # < Başlangıç
     await log_yolla(client, message)
