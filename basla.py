@@ -1,6 +1,6 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
-from Userbot import kekikUserbot, baslangic, tum_eklentiler, onemli, bilgi
+from Userbot import kekikUserbot, baslangic, tum_eklentiler, bilgi
 
 baslangic() # Bot'u Aç Kapa
 
@@ -14,11 +14,11 @@ for i in tum_eklentiler:
         eklentiler += "| {:<18}".format(i)
     j += 1
 
-onemli("+===============================================================+")
-onemli("|                       Eklentilerim                            |")
-onemli("+===============+===============+===============+===============+")
+bilgi("+===============================================================+")
+bilgi("|                       Eklentilerim                            |")
+bilgi("+===============+===============+===============+===============+")
 bilgi(f"{eklentiler}")
-onemli("+===============+===============+===============+===============+\n")
+bilgi("+===============+===============+===============+===============+\n")
 
 if __name__ == "__main__":
     kekikUserbot.run()
