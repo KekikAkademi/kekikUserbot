@@ -1,0 +1,7 @@
+KekikTaban
+setuptools
+pyrogram
+asyncio
+aiohttp
+tgcrypto
+python-dotenv
